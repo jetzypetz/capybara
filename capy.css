@@ -1,0 +1,23 @@
+
+body {
+    font-family:'Courier New', Courier, monospace;
+    text-align: center;
+    transform: translateY(75px);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; 
+  }
+
+.subtitle {
+    text-align: center;
+    font-size: 15px;
+    max-width: 1000px; 
+}
+
+#board {
+    background-color: lightgrey;
+    border-bottom: 1px solid black;
+}
