@@ -1,3 +1,3 @@
 # capybara
-simple capy html 
+simple capy html game
 
