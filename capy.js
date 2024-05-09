@@ -20,23 +20,23 @@ let capy = {
     height : capyHeight
 }
 
-//cactus
-let cactusArray = [];
+//book
+let bookArray = [];
 
-let cactus1Width = 34;
-let cactus2Width = 69;
-let cactus3Width = 102;
+let book1Width = 34;
+let book2Width = 69;
+let book3Width = 102;
 
-let cactusHeight = 70;
-let cactusX = 700;
-let cactusY = boardHeight - cactusHeight;
+let bookHeight = 70;
+let bookX = 700;
+let bookY = boardHeight - bookHeight;
 
-let cactus1Img;
-let cactus2Img;
-let cactus3Img;
+let book1Img;
+let book2Img;
+let book3Img;
 
 //physics
-let velocityX = -8; //cactus moving left speed
+let velocityX = -8; //book moving left speed
 let velocityY = 0;
 let gravity = .4;
 
@@ -60,17 +60,17 @@ window.onload = function() {
         context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
     }
 
-    cactus1Img = new Image();
-    cactus1Img.src = "./img/cactus1.png";
+    book1Img = new Image();
+    book1Img.src = "./img/book1.png";
 
-    cactus2Img = new Image();
-    cactus2Img.src = "./img/cactus2.png";
+    book2Img = new Image();
+    book2Img.src = "./img/book2.png";
 
-    cactus3Img = new Image();
-    cactus3Img.src = "./img/cactus3.png";
+    book3Img = new Image();
+    book3Img.src = "./img/book3.png";
 
     requestAnimationFrame(update);
-    setInterval(placeCactus, 1000); //1000 milliseconds = 1 second
+    setInterval(placebook, 1000); //1000 milliseconds = 1 second
     document.addEventListener("keydown", movecapy);
 }
 
@@ -86,13 +86,13 @@ function update() {
     capy.y = Math.min(capy.y + velocityY, capyY); //apply gravity to current capy.y, making sure it doesn't exceed the ground
     context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
 
-    //cactus
-    for (let i = 0; i < cactusArray.length; i++) {
-        let cactus = cactusArray[i];
-        cactus.x += velocityX;
-        context.drawImage(cactus.img, cactus.x, cactus.y, cactus.width, cactus.height);
+    //book
+    for (let i = 0; i < bookArray.length; i++) {
+        let book = bookArray[i];
+        book.x += velocityX;
+        context.drawImage(book.img, book.x, book.y, book.width, book.height);
 
-        if (detectCollision(capy, cactus)) {
+        if (detectCollision(capy, book)) {
             gameOver = true;
             capyImg.src = "./img/capy-dead.png";
             capyImg.onload = function() {
@@ -123,40 +123,40 @@ function movecapy(e) {
 
 }
 
-function placeCactus() {
+function placebook() {
     if (gameOver) {
         return;
     }
 
-    //place cactus
-    let cactus = {
+    //place book
+    let book = {
         img : null,
-        x : cactusX,
-        y : cactusY,
+        x : bookX,
+        y : bookY,
         width : null,
-        height: cactusHeight
+        height: bookHeight
     }
 
-    let placeCactusChance = Math.random(); //0 - 0.9999...
+    let placebookChance = Math.random(); //0 - 0.9999...
 
-    if (placeCactusChance > .90) { //10% you get cactus3
-        cactus.img = cactus3Img;
-        cactus.width = cactus3Width;
-        cactusArray.push(cactus);
+    if (placebookChance > .90) { //10% you get book3
+        book.img = book3Img;
+        book.width = book3Width;
+        bookArray.push(book);
     }
-    else if (placeCactusChance > .70) { //30% you get cactus2
-        cactus.img = cactus2Img;
-        cactus.width = cactus2Width;
-        cactusArray.push(cactus);
+    else if (placebookChance > .70) { //30% you get book2
+        book.img = book2Img;
+        book.width = book2Width;
+        bookArray.push(book);
     }
-    else if (placeCactusChance > .50) { //50% you get cactus1
-        cactus.img = cactus1Img;
-        cactus.width = cactus1Width;
-        cactusArray.push(cactus);
+    else if (placebookChance > .50) { //50% you get book1
+        book.img = book1Img;
+        book.width = book1Width;
+        bookArray.push(book);
     }
 
-    if (cactusArray.length > 5) {
-        cactusArray.shift(); //remove the first element from the array so that the array doesn't constantly grow
+    if (bookArray.length > 5) {
+        bookArray.shift(); //remove the first element from the array so that the array doesn't constantly grow
     }
 }
 
@@ -166,3 +166,4 @@ function detectCollision(a, b) {
            a.y < b.y + b.height &&  //a's top left corner doesn't reach b's bottom left corner
            a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
 }
+
