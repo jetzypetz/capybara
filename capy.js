@@ -7,8 +7,8 @@ let boardHeight = 250;
 let context;
 
 //capy
-let capyWidth = 88;
-let capyHeight = 94;
+let capyWidth = 90;
+let capyHeight = 90;
 let capyX = 50;
 let capyY = boardHeight - capyHeight;
 let capyImg;
@@ -55,7 +55,7 @@ window.onload = function() {
     // context.fillRect(capy.x, capy.y, capy.width, capy.height);
 
     capyImg = new Image();
-    capyImg.src = "./img/capy.png";
+    capyImg.src = "./img/capy1.png";
     capyImg.onload = function() {
         context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
     }
