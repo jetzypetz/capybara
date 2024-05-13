@@ -23,7 +23,7 @@ let capy = {
 //book
 let bookArray = [];
 
-let book1Width = 34;
+let book1Width = 63;
 let book2Width = 69;
 let book3Width = 102;
 
