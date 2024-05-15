@@ -28,7 +28,7 @@ let book2Width = 69;
 let book3Width = 102;
 
 let bookHeight = 70;
-let bookX = 700;
+let bookX = 800;
 let bookY = boardHeight - bookHeight;
 
 let book1Img;
@@ -36,7 +36,7 @@ let book2Img;
 let book3Img;
 
 //physics
-let velocityX = -8; //book moving left speed
+let velocityX = -4; //book moving left speed
 let velocityY = 0;
 let gravity = .4;
 
@@ -84,7 +84,6 @@ function update() {
     //capy
     velocityY += gravity;
     capy.y = Math.min(capy.y + velocityY, capyY); //apply gravity to current capy.y, making sure it doesn't exceed the ground
-    context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
 
     //book
     for (let i = 0; i < bookArray.length; i++) {
@@ -94,12 +93,20 @@ function update() {
 
         if (detectCollision(capy, book)) {
             gameOver = true;
-            capyImg.src = "./img/capy-dead.png";
-            capyImg.onload = function() {
-                context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
-            }
         }
     }
+
+    if (gameOver) {
+        capyImg.src = "./img/capy-dead.png";
+        capyImg.onload = function() {
+            context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
+        }
+    } else {
+        context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
+    }
+
+    // speed up
+    velocityX -= 0.007
 
     //score
     context.fillStyle="black";
