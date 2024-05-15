@@ -36,7 +36,7 @@ let book2Img;
 let book3Img;
 
 //physics
-let velocityX = -4; //book moving left speed
+let velocityX = -6; //book moving left speed
 let velocityY = 0;
 let gravity = .4;
 
@@ -106,7 +106,7 @@ function update() {
     }
 
     // speed up
-    velocityX -= 0.007
+    velocityX -= 0.005
 
     //score
     context.fillStyle="black";
