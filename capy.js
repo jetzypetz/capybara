@@ -64,10 +64,10 @@ window.onload = function() {
     book1Img.src = "./img/book1.png";
 
     book2Img = new Image();
-    book2Img.src = "./img/book2.png";
+    book2Img.src = "./img/book1.png";
 
     book3Img = new Image();
-    book3Img.src = "./img/book3.png";
+    book3Img.src = "./img/book1.png";
 
     requestAnimationFrame(update);
     setInterval(placebook, 1000); //1000 milliseconds = 1 second
