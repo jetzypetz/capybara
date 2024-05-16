@@ -119,7 +119,7 @@ function update() {
     }
     
     // speed up
-    velocityX -= 0.0015 // 5
+    velocityX -= 0.002 // 5
     
     //score
     context.fillStyle="black";
