@@ -2,13 +2,14 @@
 body {
     font-family:'Courier New', Courier, monospace;
     text-align: center;
-    transform: translateY(75px);
+    transform: translateY(45px);
 }
 
 .container {
     display: flex;
     justify-content: center;
     align-items: flex-end; 
+    margin: 10px;
   }
 
 .subtitle {
