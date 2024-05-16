@@ -22,6 +22,7 @@ let capy = {
 
 //book
 let bookArray = [];
+let book;
 
 let book1Width = 63;
 let book2Width = 69;
@@ -41,9 +42,12 @@ let velocityY = 0;
 let gravity = .4;
 
 let gameOver = false;
+let startagain = false;
 let score = 0;
 
-window.onload = function() {
+window.onload = startgame()
+
+function startgame() {
     board = document.getElementById("board");
     board.height = boardHeight;
     board.width = boardWidth;
@@ -77,7 +81,19 @@ window.onload = function() {
 function update() {
     requestAnimationFrame(update);
     if (gameOver) {
-        return;
+        if (startagain) {
+            capyImg.src = "./img/capy1.png";
+            capyImg.onload = function() {
+                context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
+            }
+            velocityX = -6;
+            bookArray = []
+            score = 0;
+            gameOver = false;
+            startagain = false;
+        } else {
+            return
+        }
     }
     context.clearRect(0, 0, board.width, board.height);
 
@@ -90,11 +106,9 @@ function update() {
         let book = bookArray[i];
         book.x += velocityX;
         context.drawImage(book.img, book.x, book.y, book.width, book.height);
-
-        if (detectCollision(capy, book)) {
-            gameOver = true;
-        }
     }
+
+    detectCollision()
 
     if (gameOver) {
         capyImg.src = "./img/capy-dead.png";
@@ -117,7 +131,7 @@ function update() {
 
 function movecapy(e) {
     if (gameOver) {
-        return;
+        startagain = true;
     }
 
     if ((e.code == "Space" || e.code == "ArrowUp") && capy.y == capyY) {
@@ -167,10 +181,14 @@ function placebook() {
     }
 }
 
-function detectCollision(a, b) {
-    return a.x < b.x + b.width &&   //a's top left corner doesn't reach b's top right corner
-           a.x + a.width > b.x &&   //a's top right corner passes b's top left corner
-           a.y < b.y + b.height &&  //a's top left corner doesn't reach b's bottom left corner
-           a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
+function detectCollision() {
+    for (let i = 0; i < bookArray.length; i++) {
+        book = bookArray[i];
+        if (capy.x < book.x + book.width &&   //a's top left corner doesn't reach b's top right corner
+        capy.x + capy.width > book.x &&   //a's top right corner passes b's top left corner
+        capy.y < book.y + book.height &&  //a's top left corner doesn't reach b's bottom left corner
+        capy.y + capy.height > book.y) {
+            gameOver = true;
+        }
+    }
 }
-
