@@ -13,14 +13,25 @@
 <body>
             
     <h1 class="title">BX Capybara Game</h1>
-    <div class="text container">
+    <div class = "text container">
     <h2 class="subtitle">The capybara game was inspired by the Chrome dino game that appears when there is no internet connection.
         The game was created by Yuki Kin and Eugenio Animali as CSE104 Web Programming project. 
         Press the <strong> "space bar"</strong>  key to start. Make the capybara jump by using the <strong>"up arrow"</strong> key, and make it duck by using the <strong>"down arrow"</strong> key.
     </h2>
-    
-</div>  
+    </div>
+
     <canvas id="board"></canvas>
+
+    <div class="no-internet-container">
+        <h1>No internet</h1>
+        <p>Try:</p>
+        <ul>
+            <li>Checking the network cables, modem, and router</li>
+            <li>Reconnecting to Wi-Fi</li>
+        </ul>
+        <p class="error-code">ERR_INTERNET_DISCONNECTED</p>
+    </div>
+    
 </body>
 
 </html>

@@ -1,8 +1,9 @@
 
 body {
-    font-family:'Courier New', Courier, monospace;
+    font-family:Arial, sans-serif, monospace;
     text-align: center;
-    transform: translateY(45px);
+    transform: translateY(80px);
+    transform: scale(80%);
 }
 
 .container {
@@ -21,4 +22,43 @@ body {
 #board {
     background-color: lightgrey;
     border-bottom: 1px solid black;
+    transform: translateY(10px);
+}
+
+.no-internet-container {
+    width: 500px; /* Adjust width as per your design requirements */
+    margin: 50px auto; /* Centering the container */
+    text-align: left;
+    font-weight: bold;
+    transform: scale(90%);
+    transform: translateX(-120px);
+}
+
+.no-internet-container h1 {
+    color: #000; /* Black color for heading */
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.no-internet-container p {
+    color: #666; /* Gray color for text */
+    font-size: 16px;
+    margin-top: 0;
+}
+
+.no-internet-container ul {
+    padding: 0;
+    color: #666;
+}
+
+.no-internet-container li {
+    transform: translateX(30px);
+    margin-bottom: 5px; /* Space between list items */
+    font-size: 16px;
+}
+
+.no-internet-container .error-code {
+    color: #666;
+    font-weight: bold;
+    margin-top: 20px; /* Space above the error code */
 }
