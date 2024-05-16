@@ -44,6 +44,7 @@ let gravity = .4;
 let gameOver = false;
 let startagain = false;
 let score = 0;
+let highScore = 0; 
 
 window.onload = startgame()
 
@@ -115,18 +116,23 @@ function update() {
         capyImg.onload = function() {
             context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
         }
+        if (score > highScore) {
+            highScore = score;  // Update high score
+        }
+
     } else {
         context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
     }
 
     // speed up
     velocityX -= 0.005
-
+    
     //score
     context.fillStyle="black";
     context.font="20px courier";
     score++;
-    context.fillText(score, 5, 20);
+    context.fillText(score, board.width - 60, 25);
+    context.fillText("HI " + highScore, board.width - 155, 25);
 }
 
 function movecapy(e) {
