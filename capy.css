@@ -2,8 +2,18 @@
 body {
     font-family:Arial, sans-serif, monospace;
     text-align: center;
-    transform: translateY(80px);
-    transform: scale(80%);
+    transform: scale(90%);
+    transform: translateY(50px);
+}
+
+.title, .subtitle {
+    margin: 5px;
+    font-weight:lighter;
+    transform: translateY(30px);
+}
+
+h2 {
+    width: 800px;
 }
 
 .container {
@@ -22,7 +32,7 @@ body {
 #board {
     background-color: lightgrey;
     border-bottom: 1px solid black;
-    transform: translateY(10px);
+    transform: translateY(40px);
 }
 
 .no-internet-container {
@@ -30,7 +40,6 @@ body {
     margin: 50px auto; /* Centering the container */
     text-align: left;
     font-weight: bold;
-    transform: scale(90%);
     transform: translateX(-120px);
 }
 
@@ -38,17 +47,20 @@ body {
     color: #000; /* Black color for heading */
     font-size: 24px;
     margin-bottom: 10px;
+    transform: translateY(15px);
 }
 
 .no-internet-container p {
     color: #666; /* Gray color for text */
     font-size: 16px;
     margin-top: 0;
+    transform: translateY(15px);
 }
 
 .no-internet-container ul {
     padding: 0;
     color: #666;
+    transform: translateY(15px);
 }
 
 .no-internet-container li {
@@ -61,4 +73,5 @@ body {
     color: #666;
     font-weight: bold;
     margin-top: 20px; /* Space above the error code */
+    transform: translateY(15px);
 }
