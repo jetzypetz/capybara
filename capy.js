@@ -44,6 +44,7 @@ let gravity = .4;
 let gameOver = false;
 let startagain = false;
 let score = 0;
+let highscore = 0;
 
 window.onload = startgame()
 
@@ -108,7 +109,7 @@ function update() {
         context.drawImage(book.img, book.x, book.y, book.width, book.height);
     }
 
-    detectCollision()
+    detectCollision(score)
 
     if (gameOver) {
         capyImg.src = "./img/capy-dead.png";
@@ -127,6 +128,7 @@ function update() {
     context.font="20px courier";
     score++;
     context.fillText(score, 5, 20);
+    context.fillText(highscore, 700, 20)
 }
 
 function movecapy(e) {
@@ -181,7 +183,7 @@ function placebook() {
     }
 }
 
-function detectCollision() {
+function detectCollision(score) {
     for (let i = 0; i < bookArray.length; i++) {
         book = bookArray[i];
         if (capy.x < book.x + book.width &&   //a's top left corner doesn't reach b's top right corner
@@ -189,6 +191,9 @@ function detectCollision() {
         capy.y < book.y + book.height &&  //a's top left corner doesn't reach b's bottom left corner
         capy.y + capy.height > book.y) {
             gameOver = true;
+            if (score > highscore) {
+                highscore = score + 1;
+            }
         }
     }
 }
