@@ -47,6 +47,8 @@ let score = 0;
 let highscore = 0;
 
 function startgame() {
+    document.body.style.backgroundColor = "#FFF";
+
     board = document.getElementById("board");
     board.height = boardHeight;
     board.width = boardWidth;
@@ -196,4 +198,8 @@ function detectCollision() {
     }
 }
 
+setTimeout(function() {
+    document.body.style.backgroundColor = "#333"; // Change to a dark background for 'nighttime'
+  }, 30000); // 0.5 minute
+  
 window.onload = startgame()
