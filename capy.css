@@ -45,8 +45,20 @@ body {
     scale: 80%;
 }
 
-.dark-mode {
-    color: white !important;
+.dark-mode{
+    color: white !important; /* Invert text color */
+}
+
+.dark-mode .no-internet-container {
+    color: white !important; /* Invert text color */
+}
+
+.dark-mode .no-internet-container h1,
+.dark-mode .no-internet-container p,
+.dark-mode .no-internet-container ul,
+.dark-mode .no-internet-container li,
+.dark-mode .no-internet-container .error-code {
+    color: white !important; /* Invert text color for all nested elements */
 }
 
 h2 {

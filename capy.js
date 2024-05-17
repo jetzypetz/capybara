@@ -68,6 +68,7 @@ newGameButton.addEventListener("click", function() {
 
 function startgame() {
     document.body.style.backgroundColor = "#FFF";
+    document.body.classList.remove("dark-mode"); // Ensure dark mode class is removed
     board = document.getElementById("board");
     board.height = boardHeight;
     board.width = boardWidth;
@@ -95,9 +96,10 @@ function startgame() {
 
     // Set the dark mode timer
     darkModeTimeout = setTimeout(function() {
-        document.body.style.backgroundColor = "#333"; // Change to a dark background for 'nighttime'
-        document.body.classList.add("dark-mode"); // Apply dark mode text color
+    document.body.style.backgroundColor = "#333"; // Change to a dark background for 'nighttime'
+    document.body.classList.add("dark-mode"); // Apply dark mode text color
     }, 30000); // 0.5 minute
+
 }
 
 
@@ -110,7 +112,7 @@ function update() {
                 context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
             }
             velocityX = -4.5; // 6
-            bookArray = []
+            bookArray = [];
             score = 0;
             gameOver = false;
             startagain = false;
@@ -132,14 +134,14 @@ function update() {
     velocityY += gravity;
     capy.y = Math.min(capy.y + velocityY, capyY); // apply gravity to current capy.y, making sure it doesn't exceed the ground
 
-    // book
+    // books
     for (let i = 0; i < bookArray.length; i++) {
         let book = bookArray[i];
         book.x += velocityX;
         context.drawImage(book.img, book.x, book.y, book.width, book.height);
     }
 
-    detectCollision(score);
+    detectCollision();
 
     if (gameOver) {
         capyImg.src = "./img/capy-dead.png";
@@ -163,6 +165,7 @@ function update() {
     context.fillText(score, 5, 20);
     context.fillText(highscore, 700, 20);
 }
+
 
 
 
