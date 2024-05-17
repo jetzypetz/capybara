@@ -151,6 +151,9 @@ function update() {
         capyImg.onload = function() {
             context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
         }
+        if (score > highScore) {
+            highScore = score;  // Update high score
+        }
     } else {
         context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
     }
@@ -162,8 +165,8 @@ function update() {
     context.fillStyle = "black";
     context.font = "20px courier";
     score++;
-    context.fillText(score, 5, 20);
-    context.fillText(highscore, 700, 20);
+    context.fillText(score, board.width - 60, 25);
+    context.fillText("HI " + highScore, board.width - 155, 25);
 }
 
 
