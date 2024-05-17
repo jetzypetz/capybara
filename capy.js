@@ -93,8 +93,10 @@ function startgame() {
     setInterval(placebook, 1000); // 1000 milliseconds = 1 second
     document.addEventListener("keydown", movecapy);
 
+    // Set the dark mode timer
     darkModeTimeout = setTimeout(function() {
         document.body.style.backgroundColor = "#333"; // Change to a dark background for 'nighttime'
+        document.body.classList.add("dark-mode"); // Apply dark mode text color
     }, 30000); // 0.5 minute
 }
 
@@ -115,8 +117,10 @@ function update() {
             gameovertext.style.display = 'none'; // Hide game over text
             newGameButton.style.display = 'none'; // Hide new game button
             document.body.style.backgroundColor = "#FFF"; // Reset to daytime
+            document.body.classList.remove("dark-mode"); // Remove dark mode text color
             darkModeTimeout = setTimeout(function() {
                 document.body.style.backgroundColor = "#333"; // Change to a dark background for 'nighttime'
+                document.body.classList.add("dark-mode"); // Apply dark mode text color
             }, 30000); // 0.5 minute
         } else {
             return;
@@ -159,6 +163,7 @@ function update() {
     context.fillText(score, 5, 20);
     context.fillText(highscore, 700, 20);
 }
+
 
 
 function movecapy(e) {
@@ -215,14 +220,23 @@ function placebook() {
 
 function detectCollision() {
     for (let i = 0; i < bookArray.length; i++) {
-        book = bookArray[i];
-        if (capy.x < book.x + book.width &&   //a's top left corner doesn't reach b's top right corner
-        capy.x + capy.width > book.x &&   //a's top right corner passes b's top left corner
-        capy.y < book.y + book.height &&  //a's top left corner doesn't reach b's bottom left corner
-        capy.y + capy.height > book.y) {
+        let book = bookArray[i];
+        
+        // Define precise bounding boxes for the books
+        let bookBoundingBox = {
+            x: book.x + 10, // Adjust these values to fit the image better
+            y: book.y + 10,
+            width: book.width - 20,
+            height: book.height - 20
+        };
+        
+        if (capy.x < bookBoundingBox.x + bookBoundingBox.width &&   // a's top left corner doesn't reach b's top right corner
+            capy.x + capy.width > bookBoundingBox.x &&   // a's top right corner passes b's top left corner
+            capy.y < bookBoundingBox.y + bookBoundingBox.height &&  // a's top left corner doesn't reach b's bottom left corner
+            capy.y + capy.height > bookBoundingBox.y) {  // a's bottom left corner passes b's top left corner
             gameOver = true;
             if (score > highscore) {
-                highscore = score + 1;
+                highscore = score;
             }
         }
     }
