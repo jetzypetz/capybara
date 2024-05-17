@@ -46,38 +46,58 @@ let startagain = false;
 let score = 0;
 let highscore = 0;
 
+let darkModeTimeout;
+
+let gameovertext = document.createElement("div");
+gameovertext.textContent = 'GAME OVER';
+gameovertext.classList.add("gameover");
+gameovertext.style.display = 'none'; // Hide initially
+document.body.appendChild(gameovertext);
+
+// Create and style the new game button image element
+let newGameButton = document.createElement("img");
+newGameButton.src = "img/reset.png"; // Path to your button image
+newGameButton.classList.add("new-game-button");
+newGameButton.style.display = 'none'; // Hide initially
+document.body.appendChild(newGameButton);
+
+// Add event listener to the new game button
+newGameButton.addEventListener("click", function() {
+    startagain = true;
+});
+
 function startgame() {
     document.body.style.backgroundColor = "#FFF";
-
     board = document.getElementById("board");
     board.height = boardHeight;
     board.width = boardWidth;
-    
-    context = board.getContext("2d"); //used for drawing on the board
-    
-    //draw initial capysaur
-    // context.fillStyle="green";
-    // context.fillRect(capy.x, capy.y, capy.width, capy.height);
-    
+
+    context = board.getContext("2d"); // used for drawing on the board
+
     capyImg = new Image();
     capyImg.src = "./img/capy1.png";
     capyImg.onload = function() {
         context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
     }
-    
+
     book1Img = new Image();
     book1Img.src = "./img/book1.png";
-    
+
     book2Img = new Image();
     book2Img.src = "./img/book1.png";
-    
+
     book3Img = new Image();
     book3Img.src = "./img/book1.png";
-    
+
     requestAnimationFrame(update);
-    setInterval(placebook, 1000); //1000 milliseconds = 1 second
+    setInterval(placebook, 1000); // 1000 milliseconds = 1 second
     document.addEventListener("keydown", movecapy);
+
+    darkModeTimeout = setTimeout(function() {
+        document.body.style.backgroundColor = "#333"; // Change to a dark background for 'nighttime'
+    }, 30000); // 0.5 minute
 }
+
 
 function update() {
     requestAnimationFrame(update);
@@ -92,44 +112,54 @@ function update() {
             score = 0;
             gameOver = false;
             startagain = false;
+            gameovertext.style.display = 'none'; // Hide game over text
+            newGameButton.style.display = 'none'; // Hide new game button
+            document.body.style.backgroundColor = "#FFF"; // Reset to daytime
+            darkModeTimeout = setTimeout(function() {
+                document.body.style.backgroundColor = "#333"; // Change to a dark background for 'nighttime'
+            }, 30000); // 0.5 minute
         } else {
-            return
+            return;
         }
     }
     context.clearRect(0, 0, board.width, board.height);
-    
-    //capy
+
+    // capy
     velocityY += gravity;
-    capy.y = Math.min(capy.y + velocityY, capyY); //apply gravity to current capy.y, making sure it doesn't exceed the ground
-    
-    //book
+    capy.y = Math.min(capy.y + velocityY, capyY); // apply gravity to current capy.y, making sure it doesn't exceed the ground
+
+    // book
     for (let i = 0; i < bookArray.length; i++) {
         let book = bookArray[i];
         book.x += velocityX;
         context.drawImage(book.img, book.x, book.y, book.width, book.height);
     }
-    
-    detectCollision(score)
-    
+
+    detectCollision(score);
+
     if (gameOver) {
         capyImg.src = "./img/capy-dead.png";
+        gameovertext.style.display = 'block'; // Show game over text
+        newGameButton.style.display = 'block'; // Show new game button
+        clearTimeout(darkModeTimeout); // Clear the dark mode timer
         capyImg.onload = function() {
             context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
         }
     } else {
         context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
     }
-    
+
     // speed up
     velocityX -= 0.002 // 5
-    
-    //score
-    context.fillStyle="black";
-    context.font="20px courier";
+
+    // score
+    context.fillStyle = "black";
+    context.font = "20px courier";
     score++;
     context.fillText(score, 5, 20);
-    context.fillText(highscore, 700, 20)
+    context.fillText(highscore, 700, 20);
 }
+
 
 function movecapy(e) {
     if (gameOver) {

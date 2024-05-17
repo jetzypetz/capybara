@@ -1,6 +1,6 @@
 
 body {
-    font-family:Arial, sans-serif, monospace;
+    font-family:'Courier New', Courier, monospace;
     text-align: center;
     transform: scale(90%);
     transform: translateY(50px);
@@ -11,6 +11,38 @@ body {
     margin: 5px;
     font-weight:lighter;
     transform: translateY(30px);
+}
+
+#board {
+    background-color: lightgrey;
+    border-bottom: 1px solid black;
+    transform: translateY(40px);
+    position: relative; /* Added to contain absolutely positioned elements */
+}
+
+.gameover {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-45%, -50%);
+    font-size: 24px;
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    font-weight: bold;
+    display: none; /* Hide initially */
+    letter-spacing: 0.5em;
+}
+
+.new-game-button {
+    position: absolute;
+    top: 51%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: none; /* Hide initially */
+    scale: 80%;
 }
 
 h2 {
