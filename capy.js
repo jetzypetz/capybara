@@ -44,7 +44,7 @@ let gravity = .32;
 let gameOver = false;
 let startagain = false;
 let score = 0;
-let highscore = 0;
+let highScore = 0;
 
 let darkModeTimeout;
 
@@ -241,8 +241,8 @@ function detectCollision() {
             capy.y < bookBoundingBox.y + bookBoundingBox.height &&  // a's top left corner doesn't reach b's bottom left corner
             capy.y + capy.height > bookBoundingBox.y) {  // a's bottom left corner passes b's top left corner
             gameOver = true;
-            if (score > highscore) {
-                highscore = score;
+            if (score > highScore) {
+                highScore = score;
             }
         }
     }
