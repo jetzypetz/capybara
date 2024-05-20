@@ -151,6 +151,9 @@ function update() {
         capyImg.onload = function() {
             context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
         }
+        if (score > highScore) {
+            highScore = score;  // Update high score
+        }
     } else {
         context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
     }
