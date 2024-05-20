@@ -7,8 +7,8 @@ let boardHeight = 250;
 let context;
 
 //capy
-let capyWidth = 70; // 90
-let capyHeight = 70;// 90
+let capyWidth = 70;
+let capyHeight = 70;
 let capyX = 50;
 let capyY = boardHeight - capyHeight;
 let capyImg;
@@ -24,11 +24,11 @@ let capy = {
 let bookArray = [];
 let book;
 
-let book1Width = 45; //63
-let book2Width = 60; // 80
-let book3Width = 80; // 100
+let book1Width = 45;
+let book2Width = 60;
+let book3Width = 80;
 
-let bookHeight = 50; // 79
+let bookHeight = 50;
 let bookX = 800;
 let bookY = boardHeight - bookHeight;
 
@@ -37,9 +37,9 @@ let book2Img;
 let book3Img;
 
 //physics
-let velocityX = -4.5; //6 book moving left speed
+let velocityX = -4.5; // book moving left speed
 let velocityY = 0;
-let gravity = .32; // .4
+let gravity = .32;
 
 let gameOver = false;
 let startagain = false;
@@ -111,8 +111,8 @@ function update() {
             capyImg.onload = function() {
                 context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
             }
-            velocityX = -4.5; // 6
-            bookArray = [];
+            velocityX = -4.5;
+            bookArray = []
             score = 0;
             gameOver = false;
             startagain = false;
@@ -156,7 +156,7 @@ function update() {
     }
 
     // speed up
-    velocityX -= 0.002 // 5
+    velocityX -= 0.002
 
     // score
     context.fillStyle = "black";
@@ -176,7 +176,7 @@ function movecapy(e) {
     
     if ((e.code == "Space" || e.code == "ArrowUp") && capy.y == capyY) {
         //jump
-        velocityY = -8; // 10
+        velocityY = -8;
     }
     else if (e.code == "ArrowDown" && capy.y == capyY) {
         //duck
