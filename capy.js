@@ -121,10 +121,9 @@ function update() {
     if (gameOver) {
         if (startagain) {
             capyImg = capyStanding;
-            context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
             velocityX = -4.5;
             bookArray = [];
-            cloudArray = [];
+            // cloudArray = [];
             score = 0;
             gameOver = false;
             startagain = false;
@@ -136,6 +135,9 @@ function update() {
                 document.body.style.backgroundColor = "#333"; // Change to a dark background for 'nighttime'
                 document.body.classList.add("dark-mode"); // Apply dark mode text color
             }, 30000); // 0.5 minute
+            return;
+        } else {
+            return;
         }
     }
     if (score % 5 == 0) {
@@ -168,15 +170,12 @@ function update() {
         gameovertext.style.display = 'block'; // Show game over text
         newGameButton.style.display = 'block'; // Show new game button
         clearTimeout(darkModeTimeout); // Clear the dark mode timer
-        capyImg.onload = function () {
-            context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
-        }
+
         if (score > highScore) {
-            highScore = score;  // Update high score
+            highScore = score + 1;  // Update high score
         }
-    } else {
-        context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
     }
+    context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
 
     // speed up
     velocityX -= 0.002
