@@ -143,9 +143,9 @@ function update() {
     running = !running;
 
     if (running) {
-        capyImg = capyRunning
+        capyImg = capyRunning;
     } else {
-        capyImg = capyStanding
+        capyImg = capyStanding;
     }
 
     context.clearRect(0, 0, board.width, board.height);
