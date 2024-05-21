@@ -11,7 +11,23 @@ let capyWidth = 70;
 let capyHeight = 70;
 let capyX = 50;
 let capyY = boardHeight - capyHeight;
-let capyImg;
+let capyStanding = new Image();
+capyStanding.src = "./img/classiccapystanding.png";
+capyStanding.onload;
+
+let capyRunning = new Image();
+capyRunning.src = "./img/classiccapyrunning.png";
+capyRunning.onload;
+
+let capyDucking = new Image();
+capyDucking.src = "./img/classiccapyducking.png";
+capyDucking.onload;
+
+let capyDead = new Image();
+capyDead.src = "./img/classiccapydead.png";
+capyDead.onload;
+
+let capyImg = capyStanding;
 
 let capy = {
     x : capyX,
@@ -40,6 +56,7 @@ let book3Img;
 let velocityX = -4.5; // book moving left speed
 let velocityY = 0;
 let gravity = .32;
+let running = false;
 
 let gameOver = false;
 let startagain = false;
@@ -66,6 +83,7 @@ newGameButton.addEventListener("click", function() {
     startagain = true;
 });
 
+
 function startgame() {
     document.body.style.backgroundColor = "#FFF";
     document.body.classList.remove("dark-mode"); // Ensure dark mode class is removed
@@ -75,11 +93,7 @@ function startgame() {
 
     context = board.getContext("2d"); // used for drawing on the board
 
-    capyImg = new Image();
-    capyImg.src = "./img/capy1.png";
-    capyImg.onload = function() {
-        context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
-    }
+    context.drawImage(capyStanding, capy.x, capy.y, capy.width, capy.height);
 
     book1Img = new Image();
     book1Img.src = "./img/book1.png";
@@ -107,10 +121,8 @@ function update() {
     requestAnimationFrame(update);
     if (gameOver) {
         if (startagain) {
-            capyImg.src = "./img/capy1.png";
-            capyImg.onload = function() {
-                context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
-            }
+            capyImg = capyDead;
+            context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
             velocityX = -4.5;
             bookArray = []
             score = 0;
@@ -128,6 +140,14 @@ function update() {
             return;
         }
     }
+    running = !running;
+
+    if (running) {
+        capyImg = capyRunning
+    } else {
+        capyImg = capyStanding
+    }
+
     context.clearRect(0, 0, board.width, board.height);
 
     // capy
