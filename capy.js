@@ -7,8 +7,8 @@ let boardHeight = 250;
 let context;
 
 //capy
-let capyWidth = 70;
-let capyHeight = 70;
+let capyWidth = 80;
+let capyHeight = 50;
 let capyX = 50;
 let capyY = boardHeight - capyHeight;
 let capyStanding = new Image();
@@ -116,15 +116,15 @@ function startgame() {
 
 }
 
-
 function update() {
     requestAnimationFrame(update);
     if (gameOver) {
         if (startagain) {
-            capyImg = capyDead;
+            capyImg = capyStanding;
             context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
             velocityX = -4.5;
-            bookArray = []
+            bookArray = [];
+            cloudArray = [];
             score = 0;
             gameOver = false;
             startagain = false;
@@ -132,15 +132,15 @@ function update() {
             newGameButton.style.display = 'none'; // Hide new game button
             document.body.style.backgroundColor = "#FFF"; // Reset to daytime
             document.body.classList.remove("dark-mode"); // Remove dark mode text color
-            darkModeTimeout = setTimeout(function() {
+            darkModeTimeout = setTimeout(function () {
                 document.body.style.backgroundColor = "#333"; // Change to a dark background for 'nighttime'
                 document.body.classList.add("dark-mode"); // Apply dark mode text color
             }, 30000); // 0.5 minute
-        } else {
-            return;
         }
     }
-    running = !running;
+    if (score % 5 == 0) {
+        running = !running;
+    }
 
     if (running) {
         capyImg = capyRunning;
@@ -164,11 +164,11 @@ function update() {
     detectCollision();
 
     if (gameOver) {
-        capyImg.src = "./img/capy-dead.png";
+        capyImg = capyDead;
         gameovertext.style.display = 'block'; // Show game over text
         newGameButton.style.display = 'block'; // Show new game button
         clearTimeout(darkModeTimeout); // Clear the dark mode timer
-        capyImg.onload = function() {
+        capyImg.onload = function () {
             context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
         }
         if (score > highScore) {
@@ -188,9 +188,6 @@ function update() {
     context.fillText(score, board.width - 60, 25);
     context.fillText("HI " + highScore, board.width - 155, 25);
 }
-
-
-
 
 function movecapy(e) {
     if (gameOver) {
