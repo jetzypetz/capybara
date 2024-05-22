@@ -134,6 +134,7 @@ h2 {
     position: absolute;
     display: grid;
     right: 0;
+    transform: translateY(-110px);;
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
     margin: 10px;
