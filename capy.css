@@ -276,12 +276,13 @@ h2 {
 
 #musicControl {
     font-family:'Courier New', Courier, monospace;
-    position: fixed;
+    position: flex;
     top: 10px;
     right: 10px;
     padding: 10px 20px;
     background-color: #333;
     color: #fff;
+    margin: 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
