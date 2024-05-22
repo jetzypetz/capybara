@@ -1,5 +1,9 @@
 "use strict";
 
+document.cookie = "username=John Doe";
+console.log("hello world")
+alert("sdfdsfsd")
+
 //board
 let board;
 let boardWidth = 750;
@@ -9,8 +13,11 @@ let context;
 //capy
 let capyWidth = 80;
 let capyHeight = 50;
+let capyDuckingHeight = 40;
 let capyX = 50;
 let capyY = boardHeight - capyHeight;
+let ducking = false;
+
 let capyStanding = new Image();
 capyStanding.src = "./img/classiccapystanding.png";
 capyStanding.onload;
@@ -164,6 +171,7 @@ function startgame() {
     requestAnimationFrame(update);
     setInterval(placebook, 1000); // 1000 milliseconds = 1 second
     document.addEventListener("keydown", movecapy);
+    document.addEventListener("keyup", stop_ducking);
 
 }
 
@@ -172,6 +180,7 @@ function update() {
     if (gameOver) {
         if (startagain) {
             capyImg = capyStanding;
+            capy.height = capyHeight;
             velocityX = -4.5;
             bookArray = [];
             // cloudArray = [];
@@ -182,19 +191,23 @@ function update() {
             newGameButton.style.display = 'none'; // Hide new game button
             document.body.style.backgroundColor = "#FFF"; // Reset to daytime
             document.body.classList.remove("dark-mode"); // Remove dark mode text color
-            return;
-        } else {
-            return;
         }
+        return;
     }
     if (score % 7 == 0) {
         running = !running;
     }
 
-    if (!running && capy.y == capyY) {
-        capyImg = capyStanding;
+    if (ducking) {
+        capyImg = capyDucking;
+        capy.height = capyDuckingHeight;
     } else {
-        capyImg = capyRunning;
+        capy.height = capyHeight;
+        if (!running && capy.y == capyY) {
+            capyImg = capyStanding;
+        } else {
+            capyImg = capyRunning;
+        }
     }
 
     context.clearRect(0, 0, board.width, board.height);
@@ -228,11 +241,11 @@ function update() {
     velocityX -= 0.0045
 
     // score
-    context.fillStyle = "black";
-    context.font = "20px courier";
-    score++;
-    context.fillText(score, board.width - 65, 25);
-    context.fillText("HI " + (highScore + 1), board.width - 170, 25);
+        context.fillStyle = "black";
+        context.font = "20px courier";
+        score++;
+        context.fillText(score, board.width - 65, 25);
+        context.fillText("HI " + (highScore + 1), board.width - 160, 25);
 }
 
 function movecapy(e) {
@@ -245,9 +258,13 @@ function movecapy(e) {
         velocityY = -8;
     }
     else if (e.code == "ArrowDown" && capy.y == capyY) {
-        //duck
+        ducking = true
     }
     
+}
+
+function stop_ducking() {
+    ducking = false
 }
 
 function placebook() {
