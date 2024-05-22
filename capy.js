@@ -61,7 +61,7 @@ let running = false;
 let gameOver = false;
 let startagain = false;
 let score = 0;
-let highScore = 0;
+let highScore = -1;
 
 let darkModeTimeout;
 
@@ -85,61 +85,61 @@ newGameButton.addEventListener("click", function() {
 
 // costumes buttons
 
-// document.getElementById('classic').addEventListener('click', function() {
-//     capyStanding.src = "./img/classiccapystanding.png";
-//     capyStanding.onload;
+function classic() {
+    capyStanding.src = "./img/classiccapystanding.png";
+    capyStanding.onload;
 
-//     capyRunning.src = "./img/classiccapyrunning.png";
-//     capyRunning.onload;
+    capyRunning.src = "./img/classiccapyrunning.png";
+    capyRunning.onload;
 
-//     capyDucking.src = "./img/classiccapyducking.png";
-//     capyDucking.onload;
+    capyDucking.src = "./img/classiccapyducking.png";
+    capyDucking.onload;
 
-//     capyDead.src = "./img/classiccapydead.png";
-//     capyDead.onload;
-// });
+    capyDead.src = "./img/classiccapydead.png";
+    capyDead.onload;
+};
 
-// document.getElementById('princess').addEventListener('click', function() {
-//     capyStanding.src = "./img/princesscapystanding.png";
-//     capyStanding.onload;
+function princess() {
+    capyStanding.src = "./img/princesscapystanding.png";
+    capyStanding.onload;
 
-//     capyRunning.src = "./img/princesscapyrunning.png";
-//     capyRunning.onload;
+    capyRunning.src = "./img/princesscapyrunning.png";
+    capyRunning.onload;
 
-//     capyDucking.src = "./img/princesscapyducking.png";
-//     capyDucking.onload;
+    capyDucking.src = "./img/princesscapyducking.png";
+    capyDucking.onload;
 
-//     capyDead.src = "./img/princesscapydead.png";
-//     capyDead.onload;
-// });
+    capyDead.src = "./img/princesscapydead.png";
+    capyDead.onload;
+};
 
-// document.getElementById('cs').addEventListener('click', function() {
-//     capyStanding.src = "./img/cscapystanding.png";
-//     capyStanding.onload;
+function cs() {
+    capyStanding.src = "./img/cscapystanding.png";
+    capyStanding.onload;
 
-//     capyRunning.src = "./img/cscapyrunning.png";
-//     capyRunning.onload;
+    capyRunning.src = "./img/cscapyrunning.png";
+    capyRunning.onload;
 
-//     capyDucking.src = "./img/cscapyducking.png";
-//     capyDucking.onload;
+    capyDucking.src = "./img/cscapyducking.png";
+    capyDucking.onload;
 
-//     capyDead.src = "./img/cscapydead.png";
-//     capyDead.onload;
-// });
+    capyDead.src = "./img/cscapydead.png";
+    capyDead.onload;
+};
 
-// document.getElementById('fancy').addEventListener('click', function() {
-//     capyStanding.src = "./img/fancycapystanding.png";
-//     capyStanding.onload;
+function fancy() {
+    capyStanding.src = "./img/fancycapystanding.png";
+    capyStanding.onload;
 
-//     capyRunning.src = "./img/fancycapyrunning.png";
-//     capyRunning.onload;
+    capyRunning.src = "./img/fancycapyrunning.png";
+    capyRunning.onload;
 
-//     capyDucking.src = "./img/fancycapyducking.png";
-//     capyDucking.onload;
+    capyDucking.src = "./img/fancycapyducking.png";
+    capyDucking.onload;
 
-//     capyDead.src = "./img/fancycapydead.png";
-//     capyDead.onload;
-// });
+    capyDead.src = "./img/fancycapydead.png";
+    capyDead.onload;
+};
 
 function startgame() {
     document.body.style.backgroundColor = "#FFF";
@@ -229,7 +229,7 @@ function update() {
         clearTimeout(darkModeTimeout); // Clear the dark mode timer
 
         if (score > highScore) {
-            highScore = score + 1;  // Update high score
+            highScore = score;  // Update high score
         }
     }
     context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
@@ -242,7 +242,7 @@ function update() {
     context.font = "20px courier";
     score++;
     context.fillText(score, board.width - 60, 25);
-    context.fillText("HI " + highScore, board.width - 155, 25);
+    context.fillText("HI " + (highScore + 1), board.width - 155, 25);
 }
 
 function movecapy(e) {

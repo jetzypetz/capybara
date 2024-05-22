@@ -90,6 +90,7 @@ h2 {
     text-align: left;
     font-weight: bold;
     transform: translateX(-120px);
+    border: 2px black solid;
 }
 
 .no-internet-container h1 {
@@ -123,4 +124,29 @@ h2 {
     font-weight: bold;
     margin-top: 20px; /* Space above the error code */
     transform: translateY(15px);
+}
+
+.bottom {
+    display: flex;
+}
+
+.chessboard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    margin: 10px;
+    padding: 10px;
+    max-width: 300px;
+    max-height: 150px;
+}
+
+.cell {
+    flex: 1;
+}
+
+.cell img {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
 }
