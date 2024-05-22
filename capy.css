@@ -275,6 +275,7 @@ h2 {
 }
 
 #musicControl {
+    font-family:'Courier New', Courier, monospace;
     position: fixed;
     top: 10px;
     right: 10px;
@@ -285,6 +286,11 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+.dark-mode #musicControl {
+    background-color: white;
+    color: black;
 }
 
 #musicControl:hover {

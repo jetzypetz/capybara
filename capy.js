@@ -171,6 +171,7 @@ function startgame() {
     document.addEventListener("keydown", movecapy);
     document.addEventListener("keyup", stop_ducking);
 
+    playMusic();
 }
 
 function update() {
@@ -329,7 +330,7 @@ function detectCollision() {
     }
 }
   
-window.onload = startgame()
+window.onload = startgame();
 
 function toggleDarkMode() {
     let body = document.body;
@@ -344,3 +345,29 @@ function toggleDarkMode() {
 
 // Replace the direct style changes in the setTimeout or any other function with a call to this toggle function
 setTimeout(toggleDarkMode, 40000); // Adjust to your preferred timing
+
+// Get the audio element
+const backgroundMusic = document.getElementById('backgroundMusic');
+const musicControlButton = document.getElementById('musicControl');
+musicControlButton.addEventListener('click', toggleMusic);
+
+// Play the background music
+function playMusic() {
+    backgroundMusic.play();
+}
+
+// Pause the background music
+function pauseMusic() {
+    backgroundMusic.pause();
+}
+
+// Toggle background music play/pause
+function toggleMusic() {
+    if (backgroundMusic.paused) {
+        playMusic();
+        musicControlButton.textContent = 'Pause Music';
+    } else {
+        pauseMusic();
+        musicControlButton.textContent = 'Play Music';
+    }
+}
