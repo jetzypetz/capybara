@@ -165,12 +165,6 @@ function startgame() {
     setInterval(placebook, 1000); // 1000 milliseconds = 1 second
     document.addEventListener("keydown", movecapy);
 
-    // Set the dark mode timer
-    darkModeTimeout = setTimeout(function() {
-    document.body.style.backgroundColor = "#333"; // Change to a dark background for 'nighttime'
-    document.body.classList.add("dark-mode"); // Apply dark mode text color
-    }, 30000); // 0.5 minute
-
 }
 
 function update() {
@@ -188,10 +182,6 @@ function update() {
             newGameButton.style.display = 'none'; // Hide new game button
             document.body.style.backgroundColor = "#FFF"; // Reset to daytime
             document.body.classList.remove("dark-mode"); // Remove dark mode text color
-            darkModeTimeout = setTimeout(function () {
-                document.body.style.backgroundColor = "#333"; // Change to a dark background for 'nighttime'
-                document.body.classList.add("dark-mode"); // Apply dark mode text color
-            }, 30000); // 0.5 minute
             return;
         } else {
             return;
@@ -235,14 +225,14 @@ function update() {
     context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
 
     // speed up
-    velocityX -= 0.004
+    velocityX -= 0.0045
 
     // score
     context.fillStyle = "black";
     context.font = "20px courier";
     score++;
-    context.fillText(score, board.width - 60, 25);
-    context.fillText("HI " + (highScore + 1), board.width - 155, 25);
+    context.fillText(score, board.width - 65, 25);
+    context.fillText("HI " + (highScore + 1), board.width - 170, 25);
 }
 
 function movecapy(e) {
@@ -320,9 +310,19 @@ function detectCollision() {
         }
     }
 }
-
-setTimeout(function() {
-    document.body.style.backgroundColor = "#333"; // Change to a dark background for 'nighttime'
-  }, 30000); // 0.5 minute
   
 window.onload = startgame()
+
+function toggleDarkMode() {
+    let body = document.body;
+    if (body.classList.contains("dark-mode")) {
+        body.classList.remove("dark-mode");
+        body.style.backgroundColor = "#FFF"; // Switch to light background
+    } else {
+        body.classList.add("dark-mode");
+        body.style.backgroundColor = "#333"; // Switch to dark background
+    }
+}
+
+// Replace the direct style changes in the setTimeout or any other function with a call to this toggle function
+setTimeout(toggleDarkMode, 40000); // Adjust to your preferred timing

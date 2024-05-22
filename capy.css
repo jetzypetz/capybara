@@ -19,6 +19,10 @@ body {
     border-bottom: 1px solid black;
 }
 
+.dark-mode #board {
+    background-color: grey;
+}
+
 .gameover {
     position: absolute;
     top: 45%;
@@ -158,6 +162,12 @@ h2 {
     border: 3px solid black;
     gap: 3px;
 }
+
+.dark-mode .cell {
+    border: 3px solid white;
+}
+
+
 
 .cell:hover {
     background-color: #666;
