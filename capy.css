@@ -10,7 +10,7 @@ body {
 .title, .subtitle {
     margin: 5px;
     font-weight:lighter;
-    transform: translateY(30px);
+    transform: translateY(10px);
 }
 
 #board {
@@ -136,7 +136,7 @@ h2 {
     position: absolute;
     display: grid;
     right: 0;
-    transform: translateY(-110px);;
+    transform: translate(210px, -110px);;
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
     margin: 10px;
