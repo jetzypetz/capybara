@@ -217,6 +217,55 @@ h2 {
     margin-bottom: 10px;
 }
 
-.leaderboard ol {
-    padding-left: 20px;
+/* Leaderboard table styles */
+.leaderboard table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.leaderboard th, .leaderboard td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+.leaderboard th {
+    background-color: #f2f2f2;
+}
+
+/* Dark mode styles */
+.dark-mode .leaderboard th, 
+.dark-mode .leaderboard td {
+    border-color: white;
+    color: white; /* Invert text color for dark mode */
+}
+
+.dark-mode .leaderboard th {
+    background-color: #666; /* Change header background color for dark mode */
+}
+
+/* Additional dark mode styles to ensure all text changes color */
+.dark-mode,
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode p,
+.dark-mode label,
+.dark-mode li,
+.dark-mode .error-code {
+    color: white !important; /* Ensure text color is white in dark mode */
+}
+
+.dark-mode .gameover,
+.dark-mode .new-game-button {
+    color: white; /* Make sure game over and new game button texts are also white */
+}
+
+/* Ensure form inputs and buttons are styled correctly in dark mode */
+.dark-mode input,
+.dark-mode button {
+    background-color: #333; /* Dark background for inputs */
+    color: white; /* White text for inputs */
+    border: 1px solid white; /* White border for better visibility */
 }
