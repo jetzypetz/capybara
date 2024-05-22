@@ -201,10 +201,10 @@ function update() {
         running = !running;
     }
 
-    if (running) {
-        capyImg = capyRunning;
-    } else {
+    if (!running && capy.y == capyY) {
         capyImg = capyStanding;
+    } else {
+        capyImg = capyRunning;
     }
 
     context.clearRect(0, 0, board.width, board.height);
