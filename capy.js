@@ -1,9 +1,5 @@
 "use strict";
 
-document.cookie = "username=John Doe";
-console.log("hello world")
-alert("sdfdsfsd")
-
 //board
 let board;
 let boardWidth = 750;
@@ -15,7 +11,9 @@ let capyWidth = 80;
 let capyHeight = 50;
 let capyDuckingHeight = 40;
 let capyX = 50;
-let capyY = boardHeight - capyHeight;
+let capyStandingY = boardHeight - capyHeight;
+let capyDuckingY = boardHeight - capyDuckingHeight;
+let capyY = capyStandingY;
 let ducking = false;
 
 let capyStanding = new Image();
@@ -181,6 +179,7 @@ function update() {
         if (startagain) {
             capyImg = capyStanding;
             capy.height = capyHeight;
+            capyY = capyStandingY;
             velocityX = -4.5;
             bookArray = [];
             // cloudArray = [];
@@ -201,8 +200,10 @@ function update() {
     if (ducking) {
         capyImg = capyDucking;
         capy.height = capyDuckingHeight;
+        capyY = capyDuckingY;
     } else {
         capy.height = capyHeight;
+        capyY = capyStandingY;
         if (!running && capy.y == capyY) {
             capyImg = capyStanding;
         } else {
