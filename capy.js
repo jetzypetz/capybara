@@ -235,7 +235,7 @@ function update() {
     context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
 
     // speed up
-    velocityX -= 0.002
+    velocityX -= 0.004
 
     // score
     context.fillStyle = "black";
@@ -276,7 +276,7 @@ function placebook() {
     
     let placebookChance = Math.random(); //0 - 0.9999...
     
-    if (placebookChance > .90) { //10% you get book3
+    if (placebookChance > .85) { //10% you get book3
         book.img = book3Img;
         book.width = book3Width;
         bookArray.push(book);
@@ -286,7 +286,7 @@ function placebook() {
         book.width = book2Width;
         bookArray.push(book);
     }
-    else if (placebookChance > .50) { //50% you get book1
+    else if (placebookChance > .40) { //50% you get book1
         book.img = book1Img;
         book.width = book1Width;
         bookArray.push(book);
