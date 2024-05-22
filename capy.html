@@ -16,6 +16,7 @@
     <h2 class="subtitle">The capybara game was inspired by the Chrome dino game that appears when there is no internet connection.
         The game was created by Yuki Kin and Eugenio Animali as part of the CSE104 Web Programming project. 
         Press the <strong> "space bar"</strong>  key to start. Make the capybara jump by using the <strong>"up arrow"</strong> key, and make it duck by using the <strong>"down arrow"</strong> key.
+        <br> <strong> Fill in </strong> your <strong> name </strong> for your score to be recorded on the leaderboard! </br>
     </h2>
     </div>
 
@@ -32,13 +33,19 @@
                 <table id="leaderboardTable">
                     <thead>
                         <tr>
-                            <th class = "leaderboardcell">Player</th>
-                            <th class = "leaderboardcell">Score</th>
+                            <th class = "leaderboardcell leaderboard_name">Player</th>
+                            <th class = "leaderboardcell leaderboard_score">Score</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="leaderboard_wrapper">
                         <!-- Top scores will be dynamically added here -->
                     </tbody>
+                </table>
+                <table style="display:none">
+                    <tr id="leaderboardcell_template">
+                        <td class = "leaderboardcell leaderboard_name"></td>
+                        <td class = "leaderboardcell leaderboard_score"></td>
+                    </tr>
                 </table>
             </div>
         </div>

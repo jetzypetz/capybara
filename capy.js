@@ -1,5 +1,9 @@
 "use strict";
 
+let leaderboard_raw = sessionStorage.getItem("leaderboard") || "[]"
+let leaderboard = JSON.parse(leaderboard_raw)
+redraw_leaderboard(leaderboard)
+
 //board
 let board;
 let boardWidth = 750;
@@ -229,6 +233,29 @@ function update() {
     detectCollision();
 
     if (gameOver) {
+
+        let leaderRaw = sessionStorage.getItem("leaderboard")
+
+        let leaderboard = []
+        if(leaderRaw != null && leaderRaw.length > 0) {
+            leaderboard = JSON.parse(leaderRaw)
+        }
+
+        let playerName = document.getElementById("playerName").value
+
+        if (playerName.length > 0) { // Add score to leaderboard
+            leaderboard.push([playerName, score+1])
+            leaderboard.sort((a, b) => { 
+                return a[1] > b[1] ? 1 : -1;
+            });
+            console.log(leaderboard)
+            sessionStorage.setItem("leaderboard", JSON.stringify(leaderboard))
+
+            redraw_leaderboard(leaderboard)
+        }
+
+
+
         capyImg = capyDead;
         gameovertext.style.display = 'block'; // Show game over text
         newGameButton.style.display = 'block'; // Show new game button
@@ -249,6 +276,31 @@ function update() {
         score++;
         context.fillText(score, board.width - 65, 25);
         context.fillText("HI " + (highScore + 1), board.width - 160, 25);
+}
+
+function redraw_leaderboard(leaderboard) {
+
+    let elem = document.getElementById("leaderboardcell_template")
+    
+    // Remove everything from current leaderboard
+    document.getElementById("leaderboard_wrapper").innerHTML = ""
+
+    for(let i=leaderboard.length-1;i>0;i--) {
+        if(leaderboard.length-i>10)
+            break
+
+        let name = leaderboard[i][0]
+        let score = leaderboard[i][1]
+        
+        let copy = elem.cloneNode(true)
+
+        copy.querySelector(".leaderboard_name").innerHTML = name
+        copy.querySelector(".leaderboard_score").innerHTML = score
+        
+        document.getElementById("leaderboard_wrapper").appendChild(copy)
+    }
+
+
 }
 
 function movecapy(e) {
