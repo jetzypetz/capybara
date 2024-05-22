@@ -269,3 +269,7 @@ h2 {
     color: white; /* White text for inputs */
     border: 1px solid white; /* White border for better visibility */
 }
+
+.leaderboardcell {
+    width: 70px;
+}
