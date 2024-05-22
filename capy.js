@@ -197,7 +197,7 @@ function update() {
             return;
         }
     }
-    if (score % 5 == 0) {
+    if (score % 7 == 0) {
         running = !running;
     }
 
