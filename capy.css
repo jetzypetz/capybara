@@ -14,6 +14,7 @@ body {
 }
 
 #board {
+    margin: auto;
     background-color: lightgrey;
     border-bottom: 1px solid black;
     transform: translateY(40px);
@@ -90,7 +91,6 @@ h2 {
     text-align: left;
     font-weight: bold;
     transform: translateX(-120px);
-    border: 2px black solid;
 }
 
 .no-internet-container h1 {
@@ -131,17 +131,36 @@ h2 {
 }
 
 .chessboard {
+    position: absolute;
     display: grid;
+    right: 0;
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
     margin: 10px;
     padding: 10px;
     max-width: 300px;
     max-height: 150px;
+    scale: 70%;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    position: relative;
 }
 
 .cell {
     flex: 1;
+    margin: 5px;
+    padding: 8px;
+    border: 3px solid black;
+    gap: 3px;
+}
+
+.cell:hover {
+    background-color: #666;
 }
 
 .cell img {
@@ -150,3 +169,4 @@ h2 {
     display: block;
     cursor: pointer;
 }
+
