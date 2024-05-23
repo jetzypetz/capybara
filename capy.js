@@ -57,18 +57,25 @@ let bookHeight = 50;
 let bookX = 800;
 let bookY = boardHeight - bookHeight;
 
-let book1Img;
-let book2Img;
-let book3Img;
+let penWidth = 50;
+let penHeight = bookHeight;
+let penX = 800;
+let penY = boardHeight - penHeight -40;
+let penImg = new Image();
+penImg.src = "./img/pen.png";
+penImg.onload;
 
-book1Img = new Image();
+let book1Img = new Image();
 book1Img.src = "./img/book1.png";
+book1Img.onload;
 
-book2Img = new Image();
+let book2Img = new Image();
 book2Img.src = "./img/book1.png";
+book2Img.onload;
 
-book3Img = new Image();
+let book3Img = new Image();
 book3Img.src = "./img/book1.png";
+book3Img.onload;
 
 //physics
 let velocityX = -4.5; // book moving left speed
@@ -338,7 +345,14 @@ function placebook() {
     
     let placebookChance = Math.random(); //0 - 0.9999...
     
-    if (placebookChance > .85) { //10% you get book3
+    if (placebookChance > .90) {
+        book.img = penImg;
+        book.width = penWidth;
+        book.y = penY;
+        book.height= penHeight;
+        bookArray.push(book);
+    }
+    else if (placebookChance > .80) { //10% you get book3
         book.img = book3Img;
         book.width = book3Width;
         bookArray.push(book);
@@ -348,7 +362,7 @@ function placebook() {
         book.width = book2Width;
         bookArray.push(book);
     }
-    else if (placebookChance > .40) { //50% you get book1
+    else if (placebookChance > .40) { //40% you get book1
         book.img = book1Img;
         book.width = book1Width;
         bookArray.push(book);
@@ -368,7 +382,7 @@ function detectCollision() {
             x: book.x + 10, // Adjust these values to fit the image better
             y: book.y + 10,
             width: book.width - 20,
-            height: book.height - 20
+            height: book.height - 10
         };
         
         if (capy.x < bookBoundingBox.x + bookBoundingBox.width &&   // a's top left corner doesn't reach b's top right corner
