@@ -3,11 +3,14 @@ body {
     margin: 0px;
     padding: 0px;
     transition: background-color 0.6s ease;
+    transform: translate(0,100px);
 }
 
 header {
     text-align: center;
-    margin: 0px;
+    margin: auto;
+    width: 850px;
+    transform: translateY(-20px);
 }
 
 header h1 {
@@ -25,6 +28,16 @@ header h1 {
 .leaderboard {
     flex: 1;
     margin-left: 20px;
+    transform: translate(10px,-20px);
+}
+
+#leaderboardTable {
+    transform: translateX(-20px);
+}
+
+#nameForm {
+    transform: translateY(-20px);
+    margin: 10px;
 }
 
 main {
@@ -38,6 +51,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    scale: 80%;
+    transform: translate(70px,-85px);
 }
 
 main {
@@ -64,6 +79,11 @@ main {
 
 .leaderboard th {
     background-color: #f2f2f2;
+}
+
+.leaderboardcell-score, .leaderboardcell-name {
+    width: 70px;
+    height: 20px;
 }
 
 .dark-mode .leaderboard th, 
@@ -129,8 +149,8 @@ main {
 
 .new-game-button {
     position: absolute;
-    top: 51%;
-    left: 50%;
+    top: 49%;
+    left: 49%;
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -145,6 +165,8 @@ main {
     background-color: #333;
     color: #fff;
     cursor: pointer;
+    scale: 110%;
+    transform: translate(30px,-20px);
 }
 .dark-mode #musicControl {
     background-color: white;
@@ -153,4 +175,8 @@ main {
 
 #musicControl:hover {
     background-color: #555;
+}
+
+.no-internet-container {
+    transform: translateY(10px);
 }

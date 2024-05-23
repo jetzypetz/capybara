@@ -23,6 +23,7 @@
             <button id="musicControl">Play Music</button> 
             <form id="nameForm">
                 <label for="playerName">Enter your name:</label>
+                <br> <br>
                 <input type="text" id="playerName" name="playerName">
             </form>
             <div class="leaderboard">
@@ -30,8 +31,8 @@
                 <table id="leaderboardTable">
                     <thead>
                         <tr>
-                            <th class = "leaderboardcell leaderboard_name">Player</th>
-                            <th class = "leaderboardcell leaderboard_score">Score</th>
+                            <th class = "leaderboardcell-name">Player</th>
+                            <th class = "leaderboardcell-score">Score</th>
                         </tr>
                     </thead>
                     <tbody id="leaderboard_wrapper">
@@ -48,7 +49,7 @@
         <main>
             <canvas id="board"></canvas>
             <div class="no-internet-container">
-                <h1>No internet</h1>
+                <h2>No internet</h2>
                 <p>Try:</p>
                 <ul>
                     <li>Checking the network cables, modem, and router</li>
