@@ -61,6 +61,15 @@ let book1Img;
 let book2Img;
 let book3Img;
 
+book1Img = new Image();
+book1Img.src = "./img/book1.png";
+
+book2Img = new Image();
+book2Img.src = "./img/book1.png";
+
+book3Img = new Image();
+book3Img.src = "./img/book1.png";
+
 //physics
 let velocityX = -4.5; // book moving left speed
 let velocityY = 0;
@@ -117,7 +126,7 @@ function princess() {
 
     capyDucking.src = "./img/princesscapyducking.png";
     capyDucking.onload;
-
+    
     capyDead.src = "./img/princesscapydead.png";
     capyDead.onload;
 };
@@ -125,7 +134,7 @@ function princess() {
 function cs() {
     capyStanding.src = "./img/cscapystanding.png";
     capyStanding.onload;
-
+    
     capyRunning.src = "./img/cscapyrunning.png";
     capyRunning.onload;
 
@@ -160,15 +169,6 @@ function startgame() {
     context = board.getContext("2d"); // used for drawing on the board
 
     context.drawImage(capyStanding, capy.x, capy.y, capy.width, capy.height);
-
-    book1Img = new Image();
-    book1Img.src = "./img/book1.png";
-
-    book2Img = new Image();
-    book2Img.src = "./img/book1.png";
-
-    book3Img = new Image();
-    book3Img.src = "./img/book1.png";
 
     requestAnimationFrame(update);
     setInterval(placebook, 1000); // 1000 milliseconds = 1 second
