@@ -82,9 +82,10 @@ h2 {
 }
 
 #board {
+    scale: 110%;
     background-color: lightgrey;
     border-bottom: 1px solid black;
-    transform: translate(-100px,40px);
+    transform: translate(-90px,40px);
 }
 
 .no-internet-container {
@@ -187,7 +188,7 @@ h2 {
     align-items: center;
     margin-right: 20px;
     max-width: 200px;
-    transform: translate(40px, -50px);
+    transform: translate(10px, -50px);
 }
 
 .sidebar form {
