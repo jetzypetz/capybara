@@ -3,25 +3,22 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="capy.css">
     <script src="capy.js" defer></script>
-    <title> CAPYBARA GAME </title>
+    <link rel="stylesheet" href="capy.css">
+    <title>CAPY GAME</title>
 </head>
-
-<body>      
-    <h1 class="title"> <strong>BX Capybara Game</strong></h1>
-    <div class = "text container">
-    <h2 class="subtitle">The capybara game was inspired by the Chrome dino game that appears when there is no internet connection.
-        The game was created by Yuki Kin and Eugenio Animali as part of the CSE104 Web Programming project. 
-        Press the <strong> "space bar"</strong>  key to start. Make the capybara jump by using the <strong>"up arrow"</strong> key, and make it duck by using the <strong>"down arrow"</strong> key.
-        <br> <strong> Enter </strong> your <strong> name </strong> for your score to be recorded on the leaderboard! </br>
-    </h2>
-    </div>
-
-    <div class = "game container">
-        <div class="sidebar">
+<body>
+    <header>
+        <h1>BX Capybara Game</h1>
+        <p>The capybara game was inspired by the Chrome dino game that appears when there is no internet connection.
+            The game was created by Yuki Kin and Eugenio Animali as part of the CSE104 Web Programming project. 
+            Press the <strong> "space bar"</strong>  key to start. Make the capybara jump by using the <strong>"up arrow"</strong> key, and make it duck by using the <strong>"down arrow"</strong> key.
+            <br> <strong> Enter </strong> your <strong> name </strong> for your score to be recorded on the leaderboard!</p>
+    </header>
+    <div class="container">
+        <aside class="leaderboard">
             <audio id="backgroundMusic" src="img/capymusic.mp3" autoplay loop></audio>
             <button id="musicControl">Play Music</button> 
             <form id="nameForm">
@@ -47,30 +44,25 @@
                     </tr>
                 </table>
             </div>
-        </div>
-    <canvas id="board"></canvas>
-    <div class="chessboard">
-        <div class="row">
+        </aside>
+        <main>
+            <canvas id="board"></canvas>
+            <div class="no-internet-container">
+                <h1>No internet</h1>
+                <p>Try:</p>
+                <ul>
+                    <li>Checking the network cables, modem, and router</li>
+                    <li>Reconnecting to Wi-Fi</li>
+                </ul>
+                <p class="error-code">ERR_INTERNET_DISCONNECTED</p>
+            </div>
+        </main>
+        <aside class="images">
             <div class="cell"><img src="img/classiccapystanding.png" alt="Image 1" onclick="classic()"></div>
             <div class="cell"><img src="img/princesscapystanding.png" alt="Image 2" onclick="princess()"></div>
             <div class="cell"><img src="img/cscapystanding.png" alt="Image 3" onclick="cs()"></div>
             <div class="cell"><img src="img/fancycapystanding.png" alt="Image 4" onclick="fancy()"></div>
-        </div>
+        </aside>
     </div>
-</div>
-
-    <div class="bottom">
-        <div class="no-internet-container">
-            <h1>No internet</h1>
-            <p>Try:</p>
-            <ul>
-                <li>Checking the network cables, modem, and router</li>
-                <li>Reconnecting to Wi-Fi</li>
-            </ul>
-            <p class="error-code">ERR_INTERNET_DISCONNECTED</p>
-        </div>
-    </div>
-    
 </body>
-
 </html>

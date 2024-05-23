@@ -1,26 +1,117 @@
-
 body {
     font-family:'Courier New', Courier, monospace;
-    text-align: center;
-    transform: scale(90%);
+    margin: 0px;
+    padding: 0px;
     transition: background-color 0.6s ease;
+}
+
+header {
+    text-align: center;
+    margin: 0px;
+}
+
+header h1 {
+    font-weight: bold;
+    margin: 5px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0px;
+}
+
+.leaderboard {
+    flex: 1;
+    margin-left: 20px;
+}
+
+main {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
-.title, .subtitle {
-    margin: 5px;
-    font-weight:lighter;
-    transform: translateY(10px);
+main {
+    display:flex;
+    flex-direction: column;
+}
+
+.images img {
+    width: 100px;
+    height: auto;
+    margin: 10px 0;
 }
 
 #board {
-    margin: 0 auto;
     background-color: lightgrey;
     border-bottom: 1px solid black;
+    width: 700px;
+    height: 230px;
 }
 
-.dark-mode #board {
-    background-color: grey;
+.leaderboard th, .leaderboard td {
+    border: 1px solid black;
+}
+
+.leaderboard th {
+    background-color: #f2f2f2;
+}
+
+.dark-mode .leaderboard th, 
+.dark-mode .leaderboard td {
+    border-color: white;
+    color: white; 
+}
+.dark-mode .leaderboard th {
+    background-color: #666; 
+}
+
+.dark-mode,
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode p,
+.dark-mode label,
+.dark-mode li,
+.dark-mode .error-code {
+    color: white !important;
+}
+.dark-mode .gameover,
+.dark-mode .new-game-button {
+    color: white; 
+}
+.dark-mode input,
+.dark-mode button {
+    background-color: #333;
+    color: white;
+    border: 1px solid white; 
+}
+
+.cell img {
+    width: 100%;
+    cursor: pointer;
+}
+.cell:hover {
+    background-color: #666;
+}
+
+.cell {
+    flex: 1;
+    border: 3px solid black;
+    width: 100px;
+}
+
+.dark-mode .cell {
+    border: 3px solid white;
 }
 
 .gameover {
@@ -40,7 +131,6 @@ body {
     position: absolute;
     top: 51%;
     left: 50%;
-    transform: translate(-50%, -50%);
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -48,249 +138,14 @@ body {
     scale: 80%;
 }
 
-.dark-mode{
-    color: white !important;
-}
-
-.dark-mode .no-internet-container {
-    color: white !important;
-}
-
-.dark-mode .no-internet-container h1,
-.dark-mode .no-internet-container p,
-.dark-mode .no-internet-container ul,
-.dark-mode .no-internet-container li,
-.dark-mode .no-internet-container .error-code {
-    color: white !important; 
-}
-
-h2 {
-    width: 800px;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    margin: 10px;
-  }
-
-.subtitle {
-    text-align: center;
-    font-size: 15px;
-    max-width: 1000px; 
-}
-
-#board {
-    scale: 110%;
-    background-color: lightgrey;
-    border-bottom: 1px solid black;
-    transform: translate(-90px,40px);
-}
-
-.no-internet-container {
-    width: 500px; 
-    margin: 50px auto; 
-    text-align: left;
-    font-weight: bold;
-    transform: translateX(-120px);
-}
-
-.no-internet-container h1 {
-    color: #000; 
-    font-size: 24px;
-    margin-bottom: 10px;
-    transform: translateY(15px);
-}
-
-.no-internet-container p {
-    color: #666; 
-    font-size: 16px;
-    margin-top: 0;
-    transform: translateY(15px);
-}
-
-.no-internet-container ul {
-    padding: 0;
-    color: #666;
-    transform: translateY(15px);
-}
-
-.no-internet-container li {
-    transform: translateX(30px);
-    margin-bottom: 5px; 
-    font-size: 16px;
-}
-
-.no-internet-container .error-code {
-    color: #666;
-    font-weight: bold;
-    margin-top: 20px; 
-    transform: translateY(15px);
-}
-
-.bottom {
-    display: flex;
-}
-
-.chessboard {
-    position: absolute;
-    scale: 90%;
-    display: grid;
-    right: 0;
-    transform: translate(150px, -80px);;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 5px;
-    margin: 10px;
-    padding: 10px;
-    max-width: 300px;
-    max-height: 150px;
-    scale: 70%;
-}
-
-.game-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.cell {
-    flex: 1;
-    margin: 5px;
-    padding: 8px;
-    border: 3px solid black;
-    gap: 3px;
-}
-
-.dark-mode .cell {
-    border: 3px solid white;
-}
-
-
-
-.cell:hover {
-    background-color: #666;
-}
-
-.cell img {
-    width: 100%;
-    height: auto;
-    display: block;
-    cursor: pointer;
-}
-
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 20px;
-    max-width: 200px;
-    transform: translate(10px, -50px);
-}
-
-.sidebar form {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-}
-
-.sidebar label {
-    margin-bottom: 10px;
-}
-
-.sidebar input {
-    margin-bottom: 10px;
-    padding: 5px;
-}
-
-.sidebar button {
-    padding: 5px;
-}
-
-.leaderboard {
-    width: 100%;
-    transform: translateY(-30px);
-}
-
-.leaderboard h3 {
-    margin-bottom: 10px;
-}
-
-/* Leaderboard table styles */
-.leaderboard table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-.leaderboard th, .leaderboard td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
-}
-
-.leaderboard th {
-    background-color: #f2f2f2;
-}
-
-/* Dark mode styles */
-.dark-mode .leaderboard th, 
-.dark-mode .leaderboard td {
-    border-color: white;
-    color: white; 
-}
-
-.dark-mode .leaderboard th {
-    background-color: #666; 
-}
-
-/* Additional dark mode styles to ensure all text changes color */
-.dark-mode,
-.dark-mode h1,
-.dark-mode h2,
-.dark-mode h3,
-.dark-mode p,
-.dark-mode label,
-.dark-mode li,
-.dark-mode .error-code {
-    color: white !important;
-}
-
-.dark-mode .gameover,
-.dark-mode .new-game-button {
-    color: white; 
-}
-
-/* Ensure form inputs and buttons are styled correctly in dark mode */
-.dark-mode input,
-.dark-mode button {
-    background-color: #333;
-    color: white;
-    border: 1px solid white; 
-}
-
-.leaderboardcell {
-    width: 100px;
-}
-
 #musicControl {
     font-family:'Courier New', Courier, monospace;
     position: flex;
-    top: 10px;
-    right: 10px;
-    padding: 10px 20px;
+    border-radius: 5px;
     background-color: #333;
     color: #fff;
-    margin: 15px;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
-    z-index: 1000; 
 }
-
 .dark-mode #musicControl {
     background-color: white;
     color: black;
