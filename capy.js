@@ -1,5 +1,6 @@
 "use strict";
 
+//leaderboard
 let leaderboard_raw = sessionStorage.getItem("leaderboard") || "[]"
 let leaderboard = JSON.parse(leaderboard_raw)
 redraw_leaderboard(leaderboard)
@@ -57,6 +58,7 @@ let bookHeight = 50;
 let bookX = 800;
 let bookY = boardHeight - bookHeight;
 
+//pen
 let penWidth = 50;
 let penHeight = bookHeight;
 let penX = 800;
@@ -77,8 +79,8 @@ let book3Img = new Image();
 book3Img.src = "./img/book1.png";
 book3Img.onload;
 
-//physics
-let velocityX = -4.5; // book moving left speed
+//the physics
+let velocityX = -4.5; // obstacles moving left speed
 let velocityY = 0;
 let gravity = .32;
 let running = false;
@@ -93,17 +95,16 @@ let darkModeTimeout;
 let gameovertext = document.createElement("div");
 gameovertext.textContent = 'GAME OVER';
 gameovertext.classList.add("gameover");
-gameovertext.style.display = 'none'; // Hide initially
+gameovertext.style.display = 'none'; 
 document.body.appendChild(gameovertext);
 
-// Create and style the new game button image element
+// Game button image element
 let newGameButton = document.createElement("img");
-newGameButton.src = "img/reset.png"; // Path to your button image
+newGameButton.src = "img/reset.png"; 
 newGameButton.classList.add("new-game-button");
-newGameButton.style.display = 'none'; // Hide initially
+newGameButton.style.display = 'none'; 
 document.body.appendChild(newGameButton);
 
-// Add event listener to the new game button
 newGameButton.addEventListener("click", function() {
     startagain = true;
 });
@@ -166,14 +167,15 @@ function fancy() {
     capyDead.onload;
 };
 
+//game starter, all initialization here
 function startgame() {
     document.body.style.backgroundColor = "#FFF";
-    document.body.classList.remove("dark-mode"); // Ensure dark mode class is removed
+    document.body.classList.remove("dark-mode"); // Ensure dark mode class removed
     board = document.getElementById("board");
     board.height = boardHeight;
     board.width = boardWidth;
 
-    context = board.getContext("2d"); // used for drawing on the board
+    context = board.getContext("2d");
 
     context.drawImage(capyStanding, capy.x, capy.y, capy.width, capy.height);
 
@@ -195,14 +197,14 @@ function update() {
             capyY = capyStandingY;
             velocityX = -4.5;
             bookArray = [];
-            // cloudArray = [];
+
             score = 0;
             gameOver = false;
             startagain = false;
-            gameovertext.style.display = 'none'; // Hide game over text
-            newGameButton.style.display = 'none'; // Hide new game button
-            document.body.style.backgroundColor = "#FFF"; // Reset to daytime
-            document.body.classList.remove("dark-mode"); // Remove dark mode text color
+            gameovertext.style.display = 'none'; 
+            newGameButton.style.display = 'none';
+            document.body.style.backgroundColor = "#FFF"; // Reset to daytime (white)
+            document.body.classList.remove("dark-mode"); 
         }
         return;
     }
@@ -264,8 +266,8 @@ function update() {
 
 
         capyImg = capyDead;
-        gameovertext.style.display = 'block'; // Show game over text
-        newGameButton.style.display = 'block'; // Show new game button
+        gameovertext.style.display = 'block'; 
+        newGameButton.style.display = 'block'; 
         clearTimeout(darkModeTimeout); // Clear the dark mode timer
 
         if (score > highScore) {
@@ -274,7 +276,7 @@ function update() {
     }
     context.drawImage(capyImg, capy.x, capy.y, capy.width, capy.height);
 
-    // speed up
+    // speed up (adjusted)
     velocityX -= 0.0045
 
     // score
@@ -381,18 +383,18 @@ function detectCollision() {
     for (let i = 0; i < bookArray.length; i++) {
         let book = bookArray[i];
         
-        // Define precise bounding boxes for the books
+        // Define precise bounding boxes for the books (adjusted)
         let bookBoundingBox = {
-            x: book.x + 10, // Adjust these values to fit the image better
+            x: book.x + 10, 
             y: book.y + 10,
             width: book.width - 20,
             height: book.height - 10
         };
         
-        if (capy.x < bookBoundingBox.x + bookBoundingBox.width &&   // a's top left corner doesn't reach b's top right corner
-            capy.x + capy.width > bookBoundingBox.x &&   // a's top right corner passes b's top left corner
-            capy.y < bookBoundingBox.y + bookBoundingBox.height &&  // a's top left corner doesn't reach b's bottom left corner
-            capy.y + capy.height > bookBoundingBox.y) {  // a's bottom left corner passes b's top left corner
+        if (capy.x < bookBoundingBox.x + bookBoundingBox.width &&   // 1 top left corner doesn't reach 2 top right corner
+            capy.x + capy.width > bookBoundingBox.x &&   // 1 top right corner passes 2 top left corner
+            capy.y < bookBoundingBox.y + bookBoundingBox.height &&  // 1 top left corner doesn't reach 2 bottom left corner
+            capy.y + capy.height > bookBoundingBox.y) {  // 1 bottom left corner passes 2 top left corner
             gameOver = true;
             if (score > highScore) {
                 highScore = score;
@@ -405,7 +407,6 @@ window.onload = function() {
     startgame();
     backgroundMusic.play();
 
-    // Ensure the music is played on user interaction if required by the browser
     const musicControlButton = document.getElementById('musicControl');
     musicControlButton.addEventListener('click', function() {
         const backgroundMusic = document.getElementById('backgroundMusic');
@@ -436,12 +437,11 @@ function toggleDarkMode() {
     let body = document.body;
     if (body.classList.contains("dark-mode")) {
         body.classList.remove("dark-mode");
-        body.style.backgroundColor = "#FFF"; // Switch to light background
+        body.style.backgroundColor = "#FFF"; 
     } else {
         body.classList.add("dark-mode");
-        body.style.backgroundColor = "#333"; // Switch to dark background
+        body.style.backgroundColor = "#333"; 
     }
 }
 
-// Replace the direct style changes in the setTimeout or any other function with a call to this toggle function
-setTimeout(toggleDarkMode, 40000); // Adjust to your preferred timing
+setTimeout(toggleDarkMode, 40000); 

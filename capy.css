@@ -32,7 +32,7 @@ body {
     font-family: 'Courier New', Courier, monospace;
     color: black;
     font-weight: bold;
-    display: none; /* Hide initially */
+    display: none;
     letter-spacing: 0.5em;
 }
 
@@ -44,16 +44,16 @@ body {
     width: 50px;
     height: 50px;
     cursor: pointer;
-    display: none; /* Hide initially */
+    display: none;
     scale: 80%;
 }
 
 .dark-mode{
-    color: white !important; /* Invert text color */
+    color: white !important;
 }
 
 .dark-mode .no-internet-container {
-    color: white !important; /* Invert text color */
+    color: white !important;
 }
 
 .dark-mode .no-internet-container h1,
@@ -61,7 +61,7 @@ body {
 .dark-mode .no-internet-container ul,
 .dark-mode .no-internet-container li,
 .dark-mode .no-internet-container .error-code {
-    color: white !important; /* Invert text color for all nested elements */
+    color: white !important; 
 }
 
 h2 {
@@ -89,22 +89,22 @@ h2 {
 }
 
 .no-internet-container {
-    width: 500px; /* Adjust width as per your design requirements */
-    margin: 50px auto; /* Centering the container */
+    width: 500px; 
+    margin: 50px auto; 
     text-align: left;
     font-weight: bold;
     transform: translateX(-120px);
 }
 
 .no-internet-container h1 {
-    color: #000; /* Black color for heading */
+    color: #000; 
     font-size: 24px;
     margin-bottom: 10px;
     transform: translateY(15px);
 }
 
 .no-internet-container p {
-    color: #666; /* Gray color for text */
+    color: #666; 
     font-size: 16px;
     margin-top: 0;
     transform: translateY(15px);
@@ -118,14 +118,14 @@ h2 {
 
 .no-internet-container li {
     transform: translateX(30px);
-    margin-bottom: 5px; /* Space between list items */
+    margin-bottom: 5px; 
     font-size: 16px;
 }
 
 .no-internet-container .error-code {
     color: #666;
     font-weight: bold;
-    margin-top: 20px; /* Space above the error code */
+    margin-top: 20px; 
     transform: translateY(15px);
 }
 
@@ -240,11 +240,11 @@ h2 {
 .dark-mode .leaderboard th, 
 .dark-mode .leaderboard td {
     border-color: white;
-    color: white; /* Invert text color for dark mode */
+    color: white; 
 }
 
 .dark-mode .leaderboard th {
-    background-color: #666; /* Change header background color for dark mode */
+    background-color: #666; 
 }
 
 /* Additional dark mode styles to ensure all text changes color */
@@ -256,20 +256,20 @@ h2 {
 .dark-mode label,
 .dark-mode li,
 .dark-mode .error-code {
-    color: white !important; /* Ensure text color is white in dark mode */
+    color: white !important;
 }
 
 .dark-mode .gameover,
 .dark-mode .new-game-button {
-    color: white; /* Make sure game over and new game button texts are also white */
+    color: white; 
 }
 
 /* Ensure form inputs and buttons are styled correctly in dark mode */
 .dark-mode input,
 .dark-mode button {
-    background-color: #333; /* Dark background for inputs */
-    color: white; /* White text for inputs */
-    border: 1px solid white; /* White border for better visibility */
+    background-color: #333;
+    color: white;
+    border: 1px solid white; 
 }
 
 .leaderboardcell {
@@ -288,7 +288,7 @@ h2 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    z-index: 1000; /* Ensure it stays on top of other elements */
+    z-index: 1000; 
 }
 
 .dark-mode #musicControl {
