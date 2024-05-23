@@ -319,14 +319,18 @@ function movecapy(e) {
         //jump
         velocityY = -8;
     }
-    else if (e.code == "ArrowDown" && capy.y == capyY) {
-        ducking = true
+    else if (e.code == "ArrowDown") {
+        gravity = .6;
+        if (capy.y == capyY) {
+            ducking = true;
+        }
     }
     
 }
 
 function stop_ducking() {
-    ducking = false
+    ducking = false;
+    gravity = .32;
 }
 
 function placebook() {
