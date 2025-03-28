@@ -8,4 +8,4 @@
 
 As of now my unemployed status denies me the funds to hold a website :/
 
-![Thumbnail](img/fancycapydead.png)
+![Thumbnail](../img/fancycapydead.png)
