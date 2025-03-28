@@ -4,4 +4,4 @@
 
 [Find all information about our project here:](CSE104%20Project%20Report%20_%20Eugenio%20Animali,%20Yuki%20Kin.pdf)
 
-![Thumbnail](img/fancycapydead.png) ![École Polytechnique Icon](https://www.planetegrandesecoles.com/wp-content/uploads/2021/07/Identite%CC%81-visuelle-Plane%CC%80te-BAC-8-600x398.png)
+![Thumbnail](img/fancycapydead.png)
